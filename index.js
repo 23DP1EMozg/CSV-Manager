@@ -33,7 +33,6 @@ class CsvManager{
 
         fs.writeFile(this.path, dataString, (err) => {
             if (err) throw err
-            console.log('saved')
         })
     }
 
@@ -41,7 +40,6 @@ class CsvManager{
         let dataString = ""
 
         if((!fs.existsSync(this.path) && this.properties.length > 0) || (fs.statSync(this.path).size == 0 && this.properties.length > 0)){
-            console.log('heaaa')
             for(let i = 0; i<this.properties.length; i++){
                 dataString += this.properties[i] + ','
             }
@@ -149,8 +147,4 @@ class CsvManager{
     }
 }
 
-const a = new CsvManager('data.csv')
-//a.setProperties(['name', 'lastname', 'age'])
-a.addData(['ciga', 'liga', '8'])
-//a.deleteOne('name', 'baka')
-//a.deleteMany('name', 'ciga')
+module.exports = CsvManager
